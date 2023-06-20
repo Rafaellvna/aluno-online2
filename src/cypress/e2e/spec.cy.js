@@ -1,10 +1,20 @@
-describe('Testando aluno-online2', () => {
-  it('Novo Requerimento', () => {
-    cy.visit('http://localhost:3000/requerimentos')
-    cy.get('.btn').click()
-    cy.get('#inputDisciplina').select("ADS030 - Manutenção de Software e DevOps")
-    cy.get('#inputProva').select('A1')
+
+describe('Testando', () => {
+  it('Soma de números', () => {
+    cy.visit('http://localhost:3000/login')
+    cy.get('#inputMatricula').type('2023100')
+    cy.get('#inputSenha').type('senha123')
+    cy.get('body > form > button').click()
+    cy.get('#navbarToggler1 > ul.navbar-nav.mr-auto.mt-2.mt-lg-0 > li:nth-child(5) > a').click()
+    cy.get('body > div > div > div.card-header > a').click()
+    cy.get("#inputDisciplina")
+      .select("ADS032 - Construção de Frontend")
+    cy.get("#inputProva")
+      .select("A1")
     cy.get('#inputArgumentacao').type('Teste Cypress')
+    cy.get('body > div > div > div.card-body > form > button').click()
+    cy.get('body > div > div > div.card-body').contains('ADS032 - Construção de Frontend')
+    cy.get('body > div > div > div.card-body').contains('Pendente')
   })
 })
 document.querySelector("#inputMatricula")
